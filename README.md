@@ -38,14 +38,22 @@ npm run check
 The starter defaults to local files and the development identity. Before
 deploying:
 
-1. Set `NODE_ENV=production`.
-2. Remove `THIMBLE_DEV_IDENTITY`.
-3. Configure Microsoft Entra or another OIDC provider.
-4. Set the exact `THIMBLE_ALLOWED_ORIGIN`.
-5. Set `THIMBLE_HOST` for the intended runtime interface.
-6. Store `THIMBLE_MASTER_KEY` and provider credentials in the platform secret
+1. Generate the recommended Entra entries:
+
+   ```powershell
+   npx thimbledb generate-entra-roles `
+     --out ".\entra-authorization.json"
+   ```
+
+2. Merge the generated roles and scope with the existing Entra application.
+3. Set `NODE_ENV=production`.
+4. Remove `THIMBLE_DEV_IDENTITY`.
+5. Configure Microsoft Entra or another OIDC provider.
+6. Set the exact `THIMBLE_ALLOWED_ORIGIN`.
+7. Set `THIMBLE_HOST` for the intended runtime interface.
+8. Store `THIMBLE_MASTER_KEY` and provider credentials in the platform secret
    store.
-7. Keep data and authentication storage separate.
+9. Keep data and authentication storage separate.
 
 For Amazon S3 or an S3-compatible provider, install
 `@aws-sdk/client-s3` and configure the documented S3 environment variables.
@@ -57,6 +65,10 @@ The complete provider, authentication, migration, and operations guides are
 available at [thimbledb.com/docs](https://thimbledb.com/docs/).
 ThimbleDB source and releases are available in the
 [main repository](https://github.com/Jason-Doyle/thimble).
+
+For automation or a live administration tool, use an OIDC service principal
+with explicit application roles. `thimble.admin` authorizes administration
+endpoints but does not grant database-wide access to every data scope.
 
 ## Security boundary
 
