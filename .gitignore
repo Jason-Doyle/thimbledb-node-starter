@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.thimble-data/
+.thimble-auth/
+*.log
+.env
+.env.*

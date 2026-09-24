@@ -1,0 +1,28 @@
+{
+  "name": "thimbledb-node-starter",
+  "version": "1.0.0",
+  "description": "Local-first authenticated notes starter for ThimbleDB and Node.js.",
+  "private": true,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jason-Doyle/thimbledb-node-starter.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n authority,web \"npm:dev:authority\" \"npm:dev:web\"",
+    "dev:authority": "node server.mjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "check": "tsc --noEmit && vite build",
+    "build": "vite build",
+    "doctor": "thimbledb doctor"
+  },
+  "dependencies": {
+    "thimbledb": "^2.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.3.6"
+  }
+}
