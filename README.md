@@ -11,6 +11,8 @@ It includes:
 - typed notes
 - declared title and modification-time indexes
 - bounded fluent queries
+- opt-in bounded cold point-read bundles
+- explicit covering index projections
 - deletion and restore
 - memory and encrypted IndexedDB caches
 
@@ -28,6 +30,12 @@ ThimbleDB Studio.
 The local authority listens on `127.0.0.1:8787`. Vite proxies `/api` and
 `/studio` requests to that authority so browser sessions, caches, and logout
 coordination remain same-origin.
+
+This starter uses the embedded deployment model: the application deployment
+owns the authority process. A production deployment can instead route
+`/api/*` to a separate authority service while preserving the same public
+browser origin. See the
+[authority deployment guide](https://thimbledb.com/docs/authority-deployment/).
 
 ## Validate the starter
 
