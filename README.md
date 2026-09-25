@@ -22,9 +22,12 @@ npm run dev
 ```
 
 Open `http://127.0.0.1:5173`.
+Open `http://127.0.0.1:5173/studio/` to inspect the same authority with
+ThimbleDB Studio.
 
-The local authority listens on `127.0.0.1:8787`. Vite proxies `/api` requests
-to that authority so browser sessions remain same-origin.
+The local authority listens on `127.0.0.1:8787`. Vite proxies `/api` and
+`/studio` requests to that authority so browser sessions, caches, and logout
+coordination remain same-origin.
 
 ## Validate the starter
 
